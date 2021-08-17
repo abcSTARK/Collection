@@ -32,6 +32,7 @@ public class TestStreamOperations {
         //displayStream(students);
         //filter(students,50).forEach(System.out::println);
         //filterAllStudentsByPer(students,50).forEach(System.out::println);
+        //filterAllStudentsByPerParallel(students,50).forEach(System.out::println); //same code but just parallelstream()
         //filterAllStudentsByPer_limit(students,50).forEach(System.out::println);
         //findNumberOfStudentsByPer(students,50);
         /*Optional<Student> optional = findOneStudentByName(students,"XYZ");
@@ -69,6 +70,11 @@ public class TestStreamOperations {
 
     static List<Student> filterAllStudentsByPer(List <Student> students,long per){
         return students.stream().filter((s)->{
+            return(s.getPercentage()>=per) ;
+        }).collect(Collectors.toList());
+    }
+    static List<Student> filterAllStudentsByPerParallel(List <Student> students,long per){
+        return students.parallelStream().filter((s)->{ //same code but just parallelstream()
             return(s.getPercentage()>=per) ;
         }).collect(Collectors.toList());
     }
