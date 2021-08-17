@@ -6,11 +6,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DemoEmployeeHashMap {
 
     public static void main(String args[]){
-        Map<String, Employee> map = new HashMap<>();
+        //Map<String, Employee> map = new HashMap<>(); //cant add and print hashmap in same time , data gets locked
+        Map<String, Employee> map = new ConcurrentHashMap<>();// so that multiple threads can be iterated and added together
 
         map.put("a",new Employee(1,"name",12345));
         map.put("y",new Employee(34,"name123",12345));
